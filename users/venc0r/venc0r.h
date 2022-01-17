@@ -9,8 +9,8 @@
 #define LAYOUT_ferris_wrapper(...)   LAYOUT(__VA_ARGS__)
 
 
-#define RAISE LT(_RAISE, KC_TAB)
-#define LOWER LT(_LOWER, KC_ENT)
+#define RAISE LT(_RAISE, KC_SPC)
+#define LOWER LT(_LOWER, KC_BSPC)
 
 #define MOUSE TG(_MOUSE)
 
@@ -72,8 +72,8 @@ typedef enum {
 #define _________________COLEMAK_R2________________       KC_M,     C_HOME_N, C_HOME_E, C_HOME_I, C_HOME_O
 #define _________________COLEMAK_R3________________       KC_K,     KC_H,     KC_COMM,  KC_DOT,   KC_SLASH
 
-#define ____THUMB_L____ RAISE,   KC_SPC
-#define ____THUMB_R____ KC_BSPC, LOWER
+#define ____THUMB_L____ KC_TAB, RAISE
+#define ____THUMB_R____ LOWER, KC_ENT
 
 
 /* Lower layer
