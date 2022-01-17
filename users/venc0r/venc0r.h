@@ -9,9 +9,11 @@
 #define LAYOUT_ferris_wrapper(...)   LAYOUT(__VA_ARGS__)
 
 
-#define RAISE LT(_RAISE, KC_ENT)
-#define LOWER LT(_LOWER, KC_TAB)
+#define RAISE LT(_RAISE, KC_TAB)
+#define LOWER LT(_LOWER, KC_ENT)
+
 #define MOUSE TG(_MOUSE)
+
 #define HOME_A GUI_T(KC_A)
 #define HOME_S ALT_T(KC_S)
 #define HOME_H CTL_T(KC_H)
@@ -70,8 +72,8 @@ typedef enum {
 #define _________________COLEMAK_R2________________       KC_M,     C_HOME_N, C_HOME_E, C_HOME_I, C_HOME_O
 #define _________________COLEMAK_R3________________       KC_K,     KC_H,     KC_COMM,  KC_DOT,   KC_SLASH
 
-#define ____THUMB_L____ LOWER,   KC_SPC
-#define ____THUMB_R____ KC_BSPC, RAISE
+#define ____THUMB_L____ RAISE,   KC_SPC
+#define ____THUMB_R____ KC_BSPC, LOWER
 
 
 /* Lower layer
@@ -95,20 +97,20 @@ typedef enum {
 
 /* Raise/nav
  * ,-----------------------------.          ,-----------------------------.
- * |     |     |     |Word |Back |          |Down |     |     |     |     |
- * |-----+-----+-----+-----+-----|          |-----+-----+-----+-----+-----|
- * |Appen|     |Right|     |     |          |     |     | End |     |     |
+ * |     |Word |     |     |Back |          |Down |Right|     |     |     |
  * |-----+-----+-----+-----+-----|	        |-----+-----+-----+-----+-----|
- * |     |     |     |     |     |          | Up  |Left |     |     |     |
+ * |Home |PGUP |PGDN | End |     |          |     |     |ENDW |     |     |
+ * |-----+-----+-----+-----+-----|	        |-----+-----+-----+-----+-----|
+ * |     |     |     |     | Del |          | Up  |Left |     |     |     |
  * `-----------------------------'	        `-----------------------------'
  */
-#define _________________NAV_L1____________________       _______, _______, _______, C(KC_RGHT), C(KC_LEFT)
-#define _________________NAV_L2____________________       KC_END,  _______, KC_LEFT, _______, _______
-#define _________________NAV_L3____________________       _______, _______, _______, _______, _______
+#define _________________NAV_L1____________________       _______, C(KC_RGHT), _______, _______, C(KC_LEFT)
+#define _________________NAV_L2____________________       KC_HOME, KC_PGUP, KC_PGDN, KC_END,  _______
+#define _________________NAV_L3____________________       _______, _______, _______, _______, KC_DEL
 
-#define _________________NAV_R1____________________       KC_DOWN, _______, _______, _______, _______
+#define _________________NAV_R1____________________       KC_DOWN, KC_RGHT, _______, _______, _______
 #define _________________NAV_R2____________________       _______, _______, ENDW,    _______, _______
-#define _________________NAV_R3____________________       KC_UP,   KC_RGHT, _______, _______, _______
+#define _________________NAV_R3____________________       KC_UP,   KC_LEFT, _______, _______, _______
 
 /* Adjust/whatever
  * ,-----------------------------.          ,-----------------------------.
