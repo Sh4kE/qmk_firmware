@@ -120,7 +120,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
             KC_ESC,  _________________QWERTY_L1_________________, ______________GAME_R1_____________,
             KC_LSFT, _________________QWERTY_L2_________________, ______________GAME_R2_____________,
             KC_LCTL, _________________QWERTY_L3_________________, ______________GAME_R3_____________,
-            MO(_LOWER), KC_SPC,KC_BSPC, MO(_RAISE)// Rightk
+            ____THUMB_L____,  ____THUMB_R____
             )
 
     /* Keymap 2: Pad/Function layer
