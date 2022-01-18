@@ -4,10 +4,10 @@
 #----------------------------------------------------------------------------
 # Firmware options
 SRC += venc0r.c
-MOUSEKEY_ENABLE = yes
 COMBO_ENABLE = yes
 VPATH += keyboards/gboards/
 BOOTLOADER = atmel-dfu
+DYNAMIC_TAPPING_TERM_ENABLE = yes
 
 #Debug options
 #VERBOSE 		 							= yes

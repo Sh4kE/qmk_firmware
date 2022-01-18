@@ -5,14 +5,11 @@
 #endif
 
    // clang-format off
-#define LAYOUT_gergoplex_wrapper(...)   LAYOUT_gergoplex(__VA_ARGS__)
 #define LAYOUT_ferris_wrapper(...)   LAYOUT(__VA_ARGS__)
 
 
 #define RAISE LT(_RAISE, KC_SPC)
 #define LOWER LT(_LOWER, KC_BSPC)
-
-#define MOUSE TG(_MOUSE)
 
 #define HOME_A GUI_T(KC_A)
 #define HOME_S ALT_T(KC_S)
@@ -34,11 +31,9 @@
 
 enum layers{
     _ALPHA = 0,   // default
-    _GAME,
     _LOWER,
     _RAISE,
     _ADJUST,
-    _MOUSE,
 };
 
 typedef enum {
@@ -124,48 +119,9 @@ typedef enum {
 
 #define _________________ADJUST_L1_________________       KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5
 #define _________________ADJUST_L2_________________       KC_F11,  _______, _______, _______, _______
-#define _________________ADJUST_L3_________________       _______, _______, _______, DF(_ALPHA), DF(_GAME)
+#define _________________ADJUST_L3_________________       _______, _______, _______, _______, DT_PRNT // DF(_ALPHA), DF(_GAME)
 
 #define _________________ADJUST_R1_________________       KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10
-#define _________________ADJUST_R2_________________       _______, _______, _______, _______, KC_F12
-#define _________________ADJUST_R3_________________       _______, _______, _______, _______, _______
+#define _________________ADJUST_R2_________________       DT_UP,   _______, _______, _______, KC_F12
+#define _________________ADJUST_R3_________________       DT_DOWN, _______, _______, _______, _______
 
-/* Gaming layer right half (its qwerty but shifted over 1 row)
- *
- *  ,-----------------------.
- *  |  Y  |  U  |  I  |  O  |
- *  |-----------------------|
- *  |  H  |  J  |  K  |  L  |
- *  |-----------------------|
- *  |  N  |  M  |  <  |  P  |
- * 	 `----------------------'
- */
-#define ______________GAME_R1_____________      KC_Y, KC_U, KC_I, KC_O
-#define ______________GAME_R2_____________      KC_H, KC_J, KC_K, KC_L
-#define ______________GAME_R3_____________      KC_N, KC_M, KC_COMM, KC_P
-
-
-/* Mouse cluster
- *  ,-----------------.
- *  | LMB |  ^  | RMB |
- *  |-----+-----+-----|
- *  |  <  |  v  |  >  |
- *  `-----------------'
- */
-#define _________MOUSE_1_________    KC_BTN1, KC_MS_U, KC_BTN2
-#define _________MOUSE_2_________    KC_MS_L, KC_MS_D, KC_MS_R
-
-/* Photoshop left side only keymap
- *
- *  ,-----------------------------.
- *  |  D  |  [  |  ]  | Flip| F1  |
- *  |-----+-----+-----+-----+-----|
- *  |  L  |  R  |  E  |  B  |  G  |
- *  |-----+-----+-----+-----+-----|
- *  |  Z  |  X  |  M  |  C  |  V  |
- * 	 `----------------------------'
- */
-
-#define ______________PHOTOSHOP_L1________________       KC_D,    KC_LBRC,     KC_RBRC,     C(S(KC_F)),     C(S(KC_N))
-#define ______________PHOTOSHOP_L2________________       KC_L,    ALT_T(KC_R), CTL_T(KC_E), SFT_T(KC_B),   KC_G
-#define ______________PHOTOSHOP_L3________________       KC_Z,    KC_X,    KC_M,   KC_C,     KC_V
