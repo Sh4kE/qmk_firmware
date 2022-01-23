@@ -1,8 +1,8 @@
 //   name     result                 chord keys
 COMB(qesc,    KC_ESC,                RAISE, KC_Q)
-COMB(ä,       RALT(KC_Q),            RAISE, C_HOME_A)
-COMB(ü,       RALT(KC_Y),            RAISE, KC_U)
-COMB(ö,       RALT(KC_P),            RAISE, C_HOME_O)
+COMB(ä,       RALT(KC_Q),            KC_Q, C_HOME_I)
+COMB(ü,       RALT(KC_Y),            KC_Y, C_HOME_I)
+COMB(ö,       RALT(KC_P),            KC_P, C_HOME_I)
 COMB(iqt,     KC_QUOT,               LOWER, C_HOME_I)
 COMB(oqt,     LSFT(KC_QUOT),         LOWER, C_HOME_O)
 COMB(bsl,     KC_BSLS,               LOWER, KC_SLASH)
