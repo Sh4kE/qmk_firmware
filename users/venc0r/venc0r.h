@@ -5,7 +5,7 @@
 #endif
 
    // clang-format off
-#define LAYOUT_ferris_wrapper(...)   LAYOUT(__VA_ARGS__)
+#define LAYOUT_venc0r_wrapper(...)   LAYOUT(__VA_ARGS__)
 
 
 #define RAISE LT(_RAISE, KC_SPC)
@@ -120,7 +120,7 @@ typedef enum {
 #define _________________NAV_L3____________________       _______, _______, C(KC_BSPC), C(KC_DEL), KC_DEL
 
 #define _________________NAV_R1____________________       KC_DOWN, KC_RGHT, _______, _______, _______
-#define _________________NAV_R2____________________       _______, _______, ENDW,    _______, _______
+#define _________________NAV_R2____________________       _______, _______, _______, _______, _______
 #define _________________NAV_R3____________________       KC_UP,   KC_LEFT, _______, _______, _______
 
 
@@ -154,25 +154,24 @@ typedef enum {
  * |CTRL |  y  |  x  |  c  |  d  |  v  |        |  k  |  h  |  ,  |  .  |  /  | WIN |
  * `-----------------------------------'        `-----------------------------------'
  */
-#define _______________S_COLEMAK_L0________________       _______, KC_1,     KC_2,     KC_3,     KC_4,     KC_5
-#define _______________S_COLEMAK_L1________________       _______, KC_Q,     KC_W,     KC_F,     KC_P,     KC_B
-#define _______________S_COLEMAK_L2________________       _______, C_HOME_A, C_HOME_R, C_HOME_S, C_HOME_T, KC_G
-#define _______________S_COLEMAK_L3________________       _______, KC_Y,     KC_X,     KC_C,     KC_D,     KC_V
-
-#define _______________S_COLEMAK_R0________________       KC_6,    KC_7,     KC_8,     KC_9,     KC_0,     _______
-#define _______________S_COLEMAK_R1________________       KC_J,    KC_L,     KC_U,     KC_Z,     KC_SCLN,  _______
-#define _______________S_COLEMAK_R2________________       KC_M,    C_HOME_N, C_HOME_E, C_HOME_I, C_HOME_O, _______
-#define _______________S_COLEMAK_R3________________       KC_K,    KC_H,     KC_COMM,  KC_DOT,   KC_SLASH, _______
-
-
 /* Thumb keys sofle
  *          ,-----------------------------.  ,-----------------------------.
  *          |     |     | ALT |SHIFT| SPC |  | BSP | ENT |ALTGR|     |     |
  *          `-----------------------------'  `-----------------------------'
  */
-#define __S_THUMB_L____ _______, _______, _______, KC_TAB, RAISE
-#define __S_THUMB_R____ LOWER, KC_ENT, _______, _______, _______
+#define _______________S_COLEMAK_L0________________       _______, KC_1,     KC_2,     KC_3,     KC_4,     KC_5
+#define _______________S_COLEMAK_L1________________       _______, KC_Q,     KC_W,     KC_F,     KC_P,     KC_B
+#define _______________S_COLEMAK_L2________________       _______, C_HOME_A, C_HOME_R, C_HOME_S, C_HOME_T, KC_G
+#define _______________S_COLEMAK_L3________________       _______, KC_Y,     KC_X,     KC_C,     KC_D,     KC_V,    KC_MUTE
+#define __S_THUMB_L____                                                      _______,  _______,  KC_TAB,  RAISE, _______
 
+#define _______________S_COLEMAK_R0________________                KC_6,    KC_7,     KC_8,     KC_9,     KC_0,     _______
+#define _______________S_COLEMAK_R1________________                KC_J,    KC_L,     KC_U,     KC_Z,     KC_SCLN,  _______
+#define _______________S_COLEMAK_R2________________                KC_M,    C_HOME_N, C_HOME_E, C_HOME_I, C_HOME_O, _______
+#define _______________S_COLEMAK_R3________________       _______, KC_K,    KC_H,     KC_COMM,  KC_DOT,   KC_SLASH, _______
+#define __S_THUMB_R____                                   _______,  LOWER,   KC_ENT,  _______,  _______
+
+#define __S_THUMB_N____                                   _______, _______, _______, _______, _______
 
 /* LOWER sofle layer
  *
@@ -186,15 +185,16 @@ typedef enum {
  * |     |  !  |  #  |  {  |  }  |  ~  |        |  &  |  [  |  ]  |  %  |  ^  |     |
  * `-----------------------------------'        `-----------------------------------'
  */
+zusatzspalten links und rechts vertaucht
 #define _______________S_SYMBOL_L0_________________       _______, _______, _______, _______, _______, _______
 #define _______________S_SYMBOL_L1_________________       KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    _______
 #define _______________S_SYMBOL_L2_________________       KC_DLR,  KC_PLUS, KC_LPRN, KC_RPRN, KC_AT,   _______
-#define _______________S_SYMBOL_L3_________________       KC_EXLM, KC_HASH, KC_LCBR, KC_RCBR, KC_TILD, _______
+#define _______________S_SYMBOL_L3_________________       KC_EXLM, KC_HASH, KC_LCBR, KC_RCBR, KC_TILD, _______, _______
 
 #define _______________S_SYMBOL_R0_________________       _______, _______, _______, _______, _______, _______
 #define _______________S_SYMBOL_R1_________________       _______, KC_6,    KC_7,    KC_8,    KC_9,    KC_0
 #define _______________S_SYMBOL_R2_________________       _______, KC_PIPE, KC_MINS, KC_EQL,  KC_UNDS, KC_ASTR
-#define _______________S_SYMBOL_R3_________________       _______, KC_AMPR, KC_LBRC, KC_RBRC, KC_PERC, KC_CIRC
+#define _______________S_SYMBOL_R3_________________       _______, _______, KC_AMPR, KC_LBRC, KC_RBRC, KC_PERC, KC_CIRC
 
 
 /* RAISE sofle layer
@@ -212,12 +212,12 @@ typedef enum {
 #define _______________S_NAV_L0____________________       _______, _______, C(KC_RGHT), _______, _______, C(KC_LEFT)
 #define _______________S_NAV_L1____________________       _______, _______, C(KC_RGHT), _______, _______, C(KC_LEFT)
 #define _______________S_NAV_L2____________________       _______, KC_HOME, KC_PGUP, KC_PGDN, KC_END, _______
-#define _______________S_NAV_L3____________________       _______, _______, _______, C(KC_BSPC), C(KC_DEL), KC_DEL
+#define _______________S_NAV_L3____________________       _______, _______, _______, C(KC_BSPC), C(KC_DEL), KC_DEL, _______
 
 #define _______________S_NAV_R0____________________       KC_DOWN, KC_RGHT, _______, _______, _______, _______
 #define _______________S_NAV_R1____________________       KC_DOWN, KC_RGHT, _______, _______, _______, _______
 #define _______________S_NAV_R2____________________       _______, _______, ENDW,    _______, _______, _______
-#define _______________S_NAV_R3____________________       KC_UP,   KC_LEFT, _______, _______, _______, _______
+#define _______________S_NAV_R3____________________       _______, KC_UP,   KC_LEFT, _______, _______, _______, _______
 
 
 /* Adjust/whatever sofle layer
@@ -234,10 +234,10 @@ typedef enum {
 #define _______________S_ADJUST_L0_________________       KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6
 #define _______________S_ADJUST_L1_________________       _______, _______, _______, _______, _______, _______
 #define _______________S_ADJUST_L2_________________       _______, _______, _______, _______, _______, _______
-#define _______________S_ADJUST_L3_________________       _______, _______, _______, _______, DT_PRNT, _______ // DF(_ALPHA), DF(_GAME)
+#define _______________S_ADJUST_L3_________________       _______, _______, _______, _______, DT_PRNT, _______, _______ // DF(_ALPHA), DF(_GAME)
 
 #define _______________S_ADJUST_R0_________________       KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12
 #define _______________S_ADJUST_R1_________________       _______, _______, _______, _______, _______, _______
 #define _______________S_ADJUST_R2_________________       DT_UP,   _______, _______, _______, _______, _______
-#define _______________S_ADJUST_R3_________________       DT_DOWN, _______, _______, _______, _______, _______
+#define _______________S_ADJUST_R3_________________       _______, DT_DOWN, _______, _______, _______, _______, _______
 
