@@ -37,21 +37,54 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 #ifdef ENCODER_ENABLE
 
-bool encoder_update_kb(uint8_t index, bool clockwise) {
-    if (index == 0) {
-        if (clockwise) {
-            tap_code(KC_VOLD);
-        } else {
-            tap_code(KC_VOLU);
+bool encoder_update_user(uint8_t index, bool clockwise) {
+    if (get_highest_layer(layer_state|default_layer_state) > 0) {
+        if (index == 0) {
+            if (clockwise) {
+                rgb_matrix_increase_sat();
+            } else {
+                rgb_matrix_decrease_sat();
+            }
+        } else if (index == 1) {
+            if (clockwise) {
+                rgb_matrix_increase_hue();
+            } else {
+                rgb_matrix_decrease_hue();
+            }
         }
-    } else if (index == 1) {
-        if (clockwise) {
-            tap_code(KC_PGDOWN);
-        } else {
-            tap_code(KC_PGUP);
+    } else {  /* Layer 0 */
+        if (index == 0) {
+            if (clockwise) {
+                tap_code(KC_MNXT);
+            } else {
+                tap_code(KC_MPRV);
+            }
+        } else if (index == 1) {
+            if (clockwise) {
+                tap_code_delay(KC_VOLU, 10);
+            } else {
+                tap_code_delay(KC_VOLD, 10);
+            }
         }
     }
-    return true;
+    return false;
 }
+
+/* bool encoder_update_kb(uint8_t index, bool clockwise) { */
+/*     if (index == 0) { */
+/*         if (clockwise) { */
+/*             tap_code(KC_VOLD); */
+/*         } else { */
+/*             tap_code(KC_VOLU); */
+/*         } */
+/*     } else if (index == 1) { */
+/*         if (clockwise) { */
+/*             rgb_matrix_increase_sat(); */
+/*         } else { */
+/*             rgb_matrix_decrease_sat(); */
+/*         } */
+/*     } */
+/*     return true; */
+/* } */
 
 #endif
