@@ -15,7 +15,7 @@ enum custom_keycodes {
     KC_LOWER,
     KC_RAISE,
     KC_ADJUST,
-    KC_PRVWD,
+    KC_PASTE_PRIM,
     KC_NXTWD,
     KC_LSTRT,
     KC_LEND,
@@ -99,17 +99,17 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
  * | Tab  | LAt  | LCtl |LShift|      | Caps |-------.    ,-------| PGDN | Left | Down | Rigth|      |      |
  * |------+------+------+------+------+------|Play/Pause| |       |------+------+------+------+------+------|
- * |Shift | Undo |  Cut | Copy | Paste|      |-------|    |-------|      | DEL  | Bspc |  END |      | Shift|
+ * |Shift | Undo |  Cut | Copy | Paste|PastePrim|-------| |-------|      | DEL  | Bspc |  END |      | Shift|
  * `-----------------------------------------/       /     \      \-----------------------------------------'
  *            | LGUI | LAlt |LShift|LOWER | /Enter  /       \Space \  |RAISE |RShift| RAlt | RGUI |
  *            |      |      |      |      |/       /         \      \ |      |      |      |      |
  *            `----------------------------------'           '------''---------------------------'
  */
 [_RAISE] = LAYOUT(
-  _______, _______ , _______ , _______ , _______ , _______,                      _______,  _______  , _______,  _______ ,  _______ ,_______,
-  _______, KC_INS,  KC_PSCR,   KC_APP,  XXXXXXX,  XXXXXXX,                       KC_PGUP, KC_INS,   KC_UP,   KC_HOME,  XXXXXXX, _______,
-  _______, KC_LALT, KC_LCTL,   KC_LSFT, XXXXXXX,  KC_CAPS,                       KC_PGDN, KC_LEFT,  KC_DOWN, KC_RGHT,  XXXXXXX, _______,
-  _______, KC_UNDO, KC_CUT,    KC_COPY, KC_PASTE, XXXXXXX,  KC_MPLY,   _______,  XXXXXXX, KC_DEL,   KC_BSPC, KC_END,   XXXXXXX, _______,
+  _______, _______ , _______ , _______ , _______ , _______,                         _______,  _______  , _______,  _______ ,  _______ ,_______,
+  _______, KC_INS,  KC_PSCR,   KC_APP,  XXXXXXX,  XXXXXXX,                          KC_PGUP, KC_INS,   KC_UP,   KC_HOME,  XXXXXXX, _______,
+  _______, KC_LALT, KC_LCTL,   KC_LSFT, XXXXXXX,  KC_CAPS,                          KC_PGDN, KC_LEFT,  KC_DOWN, KC_RGHT,  XXXXXXX, _______,
+  _______, KC_UNDO, KC_CUT,    KC_COPY, KC_PASTE, KC_PASTE_PRIM, KC_MPLY, _______,  XXXXXXX, KC_DEL,   KC_BSPC, KC_END,   XXXXXXX, _______,
                          _______, _______, _______, _______, _______,       _______, _______, _______, _______, _______
 ),
 /* ADJUST
@@ -248,46 +248,15 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 layer_off(_ADJUST);
             }
             return false;
-        case KC_PRVWD:
+        case KC_PASTE_PRIM:
             if (record->event.pressed) {
                 register_mods(mod_config(MOD_LCTL));
-                register_code(KC_LEFT);
+                register_mods(mod_config(MOD_MASK_SHIFT));
+                register_code(KC_V);
             } else {
                 unregister_mods(mod_config(MOD_LCTL));
-                unregister_code(KC_LEFT);
-            }
-            break;
-        case KC_NXTWD:
-             if (record->event.pressed) {
-                register_mods(mod_config(MOD_LCTL));
-                register_code(KC_RIGHT);
-            } else {
-                unregister_mods(mod_config(MOD_LCTL));
-                unregister_code(KC_RIGHT);
-            }
-            break;
-        case KC_LSTRT:
-            if (record->event.pressed) {
-                register_code(KC_HOME);
-            } else {
-                unregister_code(KC_HOME);
-            }
-            break;
-        case KC_LEND:
-            if (record->event.pressed) {
-                register_code(KC_END);
-            } else {
-                unregister_code(KC_END);
-            }
-            break;
-        case KC_DLINE:
-            if (record->event.pressed) {
-                register_mods(mod_config(MOD_LCTL));
-                register_code(KC_BSPC);
-            } else {
-                unregister_mods(mod_config(MOD_LCTL));
-                unregister_code(KC_BSPC);
-            }
+                unregister_mods(mod_config(MOD_MASK_SHIFT));
+                unregister_code(KC_V);
             break;
         case KC_COPY:
             if (record->event.pressed) {
