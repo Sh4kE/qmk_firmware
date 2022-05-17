@@ -109,17 +109,17 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   _______, _______ , _______ , _______ , _______ , _______,                         _______,  _______  , _______,  _______ ,  _______ ,_______,
   _______, KC_INS,  KC_PSCR,   KC_APP,  XXXXXXX,  XXXXXXX,                          KC_PGUP, KC_INS,   KC_UP,   KC_HOME,  XXXXXXX, _______,
   _______, KC_LALT, KC_LCTL,   KC_LSFT, XXXXXXX,  KC_CAPS,                          KC_PGDN, KC_LEFT,  KC_DOWN, KC_RGHT,  XXXXXXX, _______,
-  _______, KC_UNDO, KC_CUT,    KC_COPY, KC_PASTE, KC_PASTE_PRIM, KC_MPLY, _______,  XXXXXXX, KC_DEL,   KC_BSPC, KC_END,   XXXXXXX, _______,
+  _______, KC_UNDO, KC_CUT,    KC_COPY, KC_PASTE, KC_PASTE_PRIM, KC_MSTP, _______,  XXXXXXX, KC_DEL,   KC_BSPC, KC_END,   XXXXXXX, _______,
                          _______, _______, _______, _______, _______,       _______, _______, _______, _______, _______
 ),
 /* ADJUST
  * ,-----------------------------------------.                    ,-----------------------------------------.
  * |      |      |      |      |      |      |                    |      |      |      |      |      |      |
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
- * | RESET|      |QWERTY|QWERTZ|     |      |                    |      |      |      |      |      |      |
+ * | RESET|      |QWERTY|QWERTZ|      |      |                    |      |      |      |      |      |      |
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
- * |      |      |MACWIN|      |      |      |-------.    ,-------|      | VOLDO| MUTE | VOLUP|      |      |
- * |------+------+------+------+------+------|  MUTE |    |Play/Pause|------+------+------+------+------+------|
+ * |      |      |      |      |      |      |-------.    ,-------|      | VOLDO| MUTE | VOLUP|      |      |
+ * |------+------+------+------+------+------|  MSTP |    |       |------+------+------+------+------+------|
  * |      |      |      |      |      |      |-------|    |-------|      | PREV | PLAY | NEXT |      |      |
  * `-----------------------------------------/       /     \      \-----------------------------------------'
  *            | LGUI | LAlt |LShift|LOWER | /Enter  /       \Space \  |RAISE |RShift| RAlt | RGUI |
@@ -127,10 +127,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *            `----------------------------------'           '------''---------------------------'
  */
   [_ADJUST] = LAYOUT(
-  XXXXXXX , XXXXXXX,  XXXXXXX ,  XXXXXXX , XXXXXXX, XXXXXXX,                     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-  RESET  , XXXXXXX,KC_QWERTY,KC_QWERTZ,XXXXXXX,XXXXXXX,                     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-  XXXXXXX , XXXXXXX,XXXXXXX, XXXXXXX,    XXXXXXX,  XXXXXXX,                     XXXXXXX, KC_VOLD, KC_MUTE, KC_VOLU, XXXXXXX, XXXXXXX,
-  XXXXXXX , XXXXXXX, XXXXXXX, XXXXXXX,    XXXXXXX,  XXXXXXX, XXXXXXX,     XXXXXXX, XXXXXXX, KC_MPRV, KC_MPLY, KC_MNXT, XXXXXXX, XXXXXXX,
+  XXXXXXX , XXXXXXX, XXXXXXX ,  XXXXXXX , XXXXXXX, XXXXXXX,                     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+  RESET   , XXXXXXX, KC_QWERTY,KC_QWERTZ,XXXXXXX,XXXXXXX,                          XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+  XXXXXXX , XXXXXXX, XXXXXXX, XXXXXXX,    XXXXXXX,  XXXXXXX,                      XXXXXXX, KC_VOLD, KC_MUTE, KC_VOLU, XXXXXXX, XXXXXXX,
+  XXXXXXX , XXXXXXX, XXXXXXX, XXXXXXX,    XXXXXXX,  XXXXXXX, XXXXXXX,   XXXXXXX, XXXXXXX, KC_MPRV, KC_MPLY, KC_MNXT, XXXXXXX, XXXXXXX,
                    _______, _______, _______, _______, _______,     _______, _______, _______, _______, _______
   )
 };
@@ -250,14 +250,13 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             return false;
         case KC_PASTE_PRIM:
             if (record->event.pressed) {
-                register_mods(mod_config(MOD_LCTL));
                 register_mods(mod_config(MOD_MASK_SHIFT));
-                register_code(KC_V);
+                register_code(KC_INSERT);
             } else {
-                unregister_mods(mod_config(MOD_LCTL));
                 unregister_mods(mod_config(MOD_MASK_SHIFT));
-                unregister_code(KC_V);
-            break;
+                unregister_code(KC_INSERT);
+            }
+            return false;
         case KC_COPY:
             if (record->event.pressed) {
                 register_mods(mod_config(MOD_LCTL));
